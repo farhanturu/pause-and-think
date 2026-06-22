@@ -6,9 +6,7 @@
 
 > Force AI to pause, clarify, and verify — producing better code with **34% fewer tokens**.
 
-![Token Savings](chart-tokens.jpg)
-
-[![GitHub Stars](https://img.shields.io/github/stars/farhanturu/pause-and-think?style=social)](https://github.com/farhanturu/pause-and-think)
+![Token Consumption Comparison](chart-tokens.png)
 
 </div>
 
@@ -28,19 +26,19 @@ AI coding agents jump straight into code → get it wrong → rewrite → waste 
 
 **Pause & Think** forces a 4-phase workflow with smart checkpoints:
 
-![Workflow](chart-workflow.jpg)
+```
+Clarify → Plan → Execute → Verify
+```
 
-```
-✅ With Skill: "JWT or session-based? Login only or registration?"
-   → User: "JWT, login only"
-   → AI: writes correct code first try (0 wasted tokens)
-```
+Ask 1-2 key questions upfront → write correct code first time → zero rework.
 
 ---
 
-## Results
+## Test Results
 
-![Effectiveness](chart-effectiveness.jpg)
+Tested on: *"Add user registration with email validation to Express API"*
+
+![Effectiveness Comparison](chart-effectiveness.png)
 
 | Metric | Without | With | Savings |
 |--------|:---:|:---:|:---:|
@@ -50,27 +48,59 @@ AI coding agents jump straight into code → get it wrong → rewrite → waste 
 | **Files Rewritten** | 2 | 0 | **-100%** |
 | **Cost per Task** | $0.236 | $0.135 | **-43%** |
 
-![Cost Savings](chart-cost.jpg)
+---
+
+## Token Efficiency
+
+![Token Efficiency](chart-efficiency.png)
+
+| | Without Skill | With Skill |
+|--|:---:|:---:|
+| **Waste/Overhead** | 8,300 tokens (38%) | 1,500 tokens (10%) |
+| **Useful Tokens** | 13,640 (62%) | 12,930 (90%) |
 
 > **ROI: Every 1 token spent on clarify saves 5.5 tokens of rework.**
 
 ---
 
+## Savings Scale with Complexity
+
+![Token Savings by Task Size](chart-scaling.png)
+
+| Task Size | Without | With | Savings |
+|-----------|:---:|:---:|:---:|
+| Trivial (1-2 steps) | 4,000 | 3,800 | -5% |
+| Small (3-5 steps) | 12,000 | 9,500 | -21% |
+| Medium (5-15 steps) | 22,000 | 14,400 | **-34%** |
+| Large (15+ steps) | 55,000 | 28,000 | **-49%** |
+| Complex Refactor | 120,000 | 52,000 | **-57%** |
+
+The more complex the task, the bigger the savings.
+
+---
+
 ## How It Works
 
-### Phase 1: Clarify (1-2 Questions)
-Ask only questions where a wrong assumption = rewrite.
-- Tech stack? (DB, framework)
+### Phase 1: Clarify (1-2 Questions MAX)
+
+Ask only questions where a wrong assumption = rewrite:
+
+- Tech stack choice? (DB, framework)
 - Scope boundary? (what's in, what's out)
 - New project or existing code?
 
+**Skip** if answer is obvious from context.
+
 ### Phase 2: Plan (10 Lines Max)
-Present a brief plan. Self-check: YAGNI, patterns, simplicity.
+
+Present brief plan. Self-check: YAGNI, patterns, simplicity.
 
 ### Phase 3: Execute (Checkpoint ~80 Lines)
+
 Code in focused bursts. Micro-check every ~80 lines.
 
 ### Phase 4: Verify
+
 Run tests. Self-review. Present summary.
 
 ---
@@ -96,21 +126,10 @@ cp SKILL.md ~/.agents/skills/pause-and-think/SKILL.md
 
 ### Use
 
-Load at the start of any coding task:
-
 ```bash
 # In MiMo Code / Claude Code
 skill("pause-and-think")
 ```
-
-### Or Manual
-
-Follow the 4 phases mentally. The key habits:
-
-1. **Before coding:** Ask 1-2 questions max
-2. **Before writing:** Show a brief plan
-3. **During coding:** Check in every ~80 lines
-4. **After coding:** Run tests, present summary
 
 ---
 
@@ -156,12 +175,14 @@ AI: "All tests pass. Created: auth/middleware.js, auth/routes.js.
 |------|-------------|
 | `SKILL.md` | Skill definition (install this) |
 | `README.md` | This file |
-| `comparison-chart.html` | Interactive comparison (open in browser) |
 | `test-results.md` | Detailed test analysis |
-| `chart-tokens.jpg` | Token consumption chart |
-| `chart-workflow.jpg` | 4-phase workflow diagram |
-| `chart-cost.jpg` | Cost savings visualization |
-| `chart-effectiveness.jpg` | Effectiveness metrics |
+| `comparison-chart.html` | Interactive comparison |
+| `generate-charts.py` | Chart generation script |
+| `chart-tokens.png` | Token consumption chart |
+| `chart-effectiveness.png` | Effectiveness metrics |
+| `chart-efficiency.png` | Waste vs overhead donut |
+| `chart-scaling.png` | Savings by task complexity |
+| `chart-cost.png` | Cost comparison |
 
 ---
 
