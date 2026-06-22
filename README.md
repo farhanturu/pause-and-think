@@ -1,168 +1,178 @@
-# Pause & Think — Iterative Coding Skill for AI Agents
+<div align="center">
 
-> 🧠 Force AI agents to pause, reflect, and clarify before coding — producing higher quality results with fewer bugs.
+# Pause & Think
 
-## What Is This?
+### Iterative Coding Skill for AI Agents
 
-**Pause & Think** is a skill (instruction set) for AI coding agents that replaces the typical "jump straight into code" approach with a structured 4-phase workflow:
+> Force AI to pause, clarify, and verify — producing better code with **34% fewer tokens**.
+
+![Token Savings](chart-tokens.jpg)
+
+[![GitHub Stars](https://img.shields.io/github/stars/farhanturu/pause-and-think?style=social)](https://github.com/farhanturu/pause-and-think)
+
+</div>
+
+---
+
+## The Problem
+
+AI coding agents jump straight into code → get it wrong → rewrite → waste tokens → user frustrated.
 
 ```
-Clarify → Plan → Execute → Verify
+❌ Typical AI: "I'll just write 200 lines of auth code"
+   → User: "I wanted session-based, not JWT"
+   → AI: *rewrites everything* (+8,300 wasted tokens)
 ```
 
-Each phase has mandatory checkpoints where the agent **pauses** to think, ask questions, or validate its work.
+## The Solution
 
-## Why?
+**Pause & Think** forces a 4-phase workflow with smart checkpoints:
 
-Most AI coding agents suffer from:
+![Workflow](chart-workflow.jpg)
 
-| Problem | Impact |
-|---------|--------|
-| **No clarification** | Builds the wrong thing |
-| **No planning** | Messy architecture, over-engineering |
-| **No checkpoints** | Bugs accumulate undetected |
-| **No verification** | Broken code shipped to user |
-
-**Pause & Think** fixes all four by forcing structured reflection at natural breakpoints.
-
-## The 4 Phases
-
-### Phase 1: Clarify & Understand
-- Restate the user's goal in your own words
-- Ask 2-5 clarifying questions about scope, style, priority
-- Get explicit confirmation before proceeding
-
-### Phase 2: Plan & Design
-- State the approach in 2-3 sentences
-- List files to create/modify
-- Check for over-engineering (YAGNI)
-- Present plan to user for approval
-
-### Phase 3: Execute & Code
-- Write code in focused bursts
-- Micro-checkpoint every ~50 lines
-- Midpoint review at ~50% completion
-- Ask user if hitting blockers
-
-### Phase 4: Verify & Self-Review
-- Read through all changes
-- Run lint/format/tests
-- Check for errors, consistency, security
-- Present summary to user
-
-## Decision Matrix
-
-| Task Size | Phase 1 | Phase 2 | Phase 3 | Phase 4 |
-|-----------|---------|---------|---------|---------|
-| Trivial (1-2 steps) | Skip questions, restate only | Skip | Execute | Quick check |
-| Small (3-5 steps) | Mini clarify (1-2 questions) | Brief plan | Execute + micro-check | Self-review |
-| Medium (5-15 steps) | Full clarify (2-3 questions) | Detailed plan | Execute + checkpoints | Review + test |
-| Large (15+ steps) | Deep clarify (3-5 questions) | Architecture plan | Phased execution | Full verification |
-
-## Comparison: With vs Without
-
-### Without Skill (Typical AI Agent)
 ```
-User: "Add auth to the API"
-AI: *writes 200 lines of JWT code*
-User: "I wanted session-based auth..."
-AI: *rewrites everything*
+✅ With Skill: "JWT or session-based? Login only or registration?"
+   → User: "JWT, login only"
+   → AI: writes correct code first try (0 wasted tokens)
 ```
-- 35% code correct on first try
-- 72% rework/rewrite rate
-- 85% assumptions without asking
-- 42% user satisfaction
 
-### With Pause & Think
-```
-User: "Add auth to the API"
-AI: "Before I start — JWT or session-based?
-     Login only or also registration?
-     Which auth library?"
-User: "JWT, login only, passport.js"
-AI: "Got it. I'll add JWT auth with passport.js.
-     Plan: 1) Install deps, 2) Create middleware,
-     3) Add login endpoint, 4) Protect routes. Proceed?"
-User: "Yes"
-AI: [writes code with checkpoints]
-AI: "Done. Created 2 files, modified 3. Tests pass."
-```
-- 82% code correct on first try
-- 18% rework/rewrite rate
-- 12% assumptions without asking
-- 89% user satisfaction
+---
 
-## Clarification Sections (Intelligence Boosters)
+## Results
 
-The skill includes 4 built-in thinking patterns:
+![Effectiveness](chart-effectiveness.jpg)
 
-1. **Scope Creep Detection** — Split multi-tasks before starting
-2. **Dependency Check** — Confirm new packages, conflicts, DB changes
-3. **Failure Mode Thinking** — What could go wrong? Plan for it.
-4. **Reversibility Check** — Can this be undone? Rollback plan?
+| Metric | Without | With | Savings |
+|--------|:---:|:---:|:---:|
+| **Total Tokens** | 21,940 | 14,430 | **-34%** |
+| **AI Response Tokens** | 12,100 | 6,600 | **-45%** |
+| **Rework Cycles** | 2x | 0x | **-100%** |
+| **Files Rewritten** | 2 | 0 | **-100%** |
+| **Cost per Task** | $0.236 | $0.135 | **-43%** |
 
-## Installation
+![Cost Savings](chart-cost.jpg)
 
-Copy `SKILL.md` to your AI agent's skills directory:
+> **ROI: Every 1 token spent on clarify saves 5.5 tokens of rework.**
+
+---
+
+## How It Works
+
+### Phase 1: Clarify (1-2 Questions)
+Ask only questions where a wrong assumption = rewrite.
+- Tech stack? (DB, framework)
+- Scope boundary? (what's in, what's out)
+- New project or existing code?
+
+### Phase 2: Plan (10 Lines Max)
+Present a brief plan. Self-check: YAGNI, patterns, simplicity.
+
+### Phase 3: Execute (Checkpoint ~80 Lines)
+Code in focused bursts. Micro-check every ~80 lines.
+
+### Phase 4: Verify
+Run tests. Self-review. Present summary.
+
+---
+
+## Task Size Guide
+
+| Size | Clarify | Plan | Execute | Verify |
+|------|---------|------|---------|--------|
+| Trivial | Restate only | Skip | Run | Quick check |
+| Small | 1 question | Brief plan | +micro-check | Self-review |
+| Medium | 2 questions | Full plan | +checkpoints | Review+test |
+| Large | 3 questions | Architecture | Phased exec | Full verify |
+
+---
+
+## Quick Start
+
+### Install
 
 ```bash
 cp SKILL.md ~/.agents/skills/pause-and-think/SKILL.md
 ```
 
-## Usage
+### Use
 
-Load the skill at the start of any coding task. The agent will automatically follow the 4-phase workflow.
+Load at the start of any coding task:
 
-In MiMo Code / Claude Code, load via the skill tool:
-```
+```bash
+# In MiMo Code / Claude Code
 skill("pause-and-think")
 ```
 
-## Anti-Patterns
+### Or Manual
 
-The skill also defines what NOT to do:
+Follow the 4 phases mentally. The key habits:
 
-- ❌ Jumping straight to coding without understanding
-- ❌ Writing 500+ lines without a checkpoint
-- ❌ Assuming the user's intent without asking
-- ❌ Skipping tests because "it's simple"
-- ❌ Marking done without running checks
-
-## Metrics (Self-Measurement)
-
-Track after each task:
-- Questions asked vs assumptions made
-- Times you paused to re-check your plan
-- Bugs caught at checkpoint vs bugs found by user
-- Code rewrites needed after user feedback
-
-## Test Results (Real Simulation)
-
-Tested on task: *"Add user registration with email validation to Express API"*
-
-| Metric | Without Skill | With Skill | Savings |
-|--------|:---:|:---:|:---:|
-| **Total Tokens** | 21,940 | 14,430 | **-34%** |
-| **AI Response Tokens** | 12,100 | 6,600 | **-45%** |
-| **Rework Cycles** | 2 | 0 | **-100%** |
-| **Files Rewritten** | 2 | 0 | **-100%** |
-| **Assumptions Made** | 3 | 0 | **-100%** |
-| **Cost (per task)** | $0.236 | $0.135 | **-43%** |
-
-**Key Insight:** Overhead clarify (1,500 tokens) saves 8,300 tokens of rework = **5.5x ROI**.
-
-Full details: `test-results.md` | Visual chart: `comparison-chart.html`
-
-## Files
-
-- `SKILL.md` — The full skill definition
-- `comparison-chart.html` — Visual comparison chart (open in browser)
-- `test-results.md` — Detailed test results and analysis
-
-## License
-
-MIT — Use freely in any AI agent setup.
+1. **Before coding:** Ask 1-2 questions max
+2. **Before writing:** Show a brief plan
+3. **During coding:** Check in every ~80 lines
+4. **After coding:** Run tests, present summary
 
 ---
 
-Built by PaongLabs AI Agent
+## Example
+
+```
+User: "Add auth to the API"
+
+[Clarify]
+AI: "JWT or session-based? Login only or also registration?"
+User: "JWT, login only"
+
+[Plan]
+AI: "Plan: 1) Install passport+jwt, 2) Create middleware,
+     3) POST /login endpoint, 4) Protect /api/* routes. Go?"
+
+[Execute]
+AI: [writes middleware] "Middleware done. Adding login endpoint..."
+AI: [writes endpoint] "Endpoint done. Adding route protection..."
+
+[Verify]
+AI: "All tests pass. Created: auth/middleware.js, auth/routes.js.
+     Modified: app.js. POST /api/auth/login — returns JWT. Adjustments?"
+```
+
+---
+
+## What It Prevents
+
+| Anti-Pattern | How Skill Fixes It |
+|-------------|-------------------|
+| Jumping to code | Phase 1 forces clarification |
+| No planning | Phase 2 requires brief plan |
+| 300+ line monoliths | Phase 3 checkpoints every ~80 lines |
+| Skipping tests | Phase 4 requires verification |
+| Assumptions | 1-2 targeted questions before coding |
+
+---
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `SKILL.md` | Skill definition (install this) |
+| `README.md` | This file |
+| `comparison-chart.html` | Interactive comparison (open in browser) |
+| `test-results.md` | Detailed test analysis |
+| `chart-tokens.jpg` | Token consumption chart |
+| `chart-workflow.jpg` | 4-phase workflow diagram |
+| `chart-cost.jpg` | Cost savings visualization |
+| `chart-effectiveness.jpg` | Effectiveness metrics |
+
+---
+
+## License
+
+MIT
+
+---
+
+<div align="center">
+
+**Built by [PaongLabs](https://github.com/farhanturu)**
+
+</div>
