@@ -2,7 +2,7 @@
 
 ## Core Principle
 
-Before coding, **pause and think**. Ask the minimum questions needed to get it right the first time.
+Before coding, **pause and think**. Understand the task, plan briefly, verify before done.
 
 ---
 
@@ -16,7 +16,7 @@ Clarify → Plan → Execute → Verify
 
 ## Phase 1: Clarify
 
-**Goal:** Understand the task before writing any code.
+**Goal:** Understand the task before writing code.
 
 **Rules:**
 1. Restate the goal in 1 sentence
@@ -24,21 +24,15 @@ Clarify → Plan → Execute → Verify
 3. Skip if answer is obvious from context
 4. If user says "just do it" → proceed with best judgment
 
-**What to ask:**
-- Tech stack? (DB, framework) — if ambiguous
-- Scope? (what's in/out) — if unclear
-- New or existing code? — if context missing
+**What to ask (only when ambiguous):**
+- Tech stack? (DB, framework)
+- Scope? (what's in/out)
+- New or existing code?
 
-**What NOT to ask:**
-- Style preferences (tabs/spaces, colors)
+**Don't ask:**
+- Style preferences (tabs/spaces)
 - Obvious choices (use existing DB)
-- Hypotheticals ("what if you need X later?")
-
-**Example:**
-```
-✅ "JWT or session-based? Login only or registration?"
-❌ "What database? What framework? What language? What IDE?"
-```
+- Hypotheticals ("what if X later?")
 
 ---
 
@@ -48,25 +42,23 @@ Clarify → Plan → Execute → Verify
 
 Present a brief plan:
 ```
-Plan:
 1. Install [deps]
 2. Create [file] — [purpose]
 3. Modify [file] — [what]
 4. Test — [how]
 ```
 
-**Self-check:** Simplest solution? Matches patterns? No over-engineering?
+Self-check: Simplest solution? Matches patterns? No over-engineering?
 
 ---
 
 ## Phase 3: Execute
 
-**Goal:** Write code in focused bursts.
+**Goal:** Write code. If uncertain, ask — don't guess.
 
-**During execution:**
-- Check in with user if hitting blockers or ambiguities
-- If approach changes mid-way, briefly update user
-- Don't guess — ask when uncertain
+- Hit a blocker? → Stop, ask user
+- Approach changed? → Brief update to user
+- Ambiguous requirement? → Clarify before coding
 
 ---
 
@@ -82,27 +74,27 @@ Plan:
    [Key feature]. Any adjustments?
    ```
 
-**Rule:** Never mark done without running checks.
+Never mark done without running checks.
 
 ---
 
 ## Task Size Guide
 
-| Size | Clarify | Plan | Execute | Verify |
-|------|---------|------|---------|--------|
-| Trivial | Restate | Skip | Run | Quick |
-| Small | 1 question | Brief | Normal | Review |
-| Medium | 2 questions | Full | Normal | Test |
-| Large | 3 questions | Arch | Phased | Full |
+| Size | Clarify | Plan | Verify |
+|------|---------|------|--------|
+| Trivial | Restate | Skip | Quick |
+| Small | 1 question | Brief | Review |
+| Medium | 2 questions | Full | Test |
+| Large | 3 questions | Arch | Full |
 
 ---
 
 ## Anti-Patterns
 
-- ❌ Jumping to code without understanding
-- ❌ Assuming tech choices without asking
-- ❌ Skipping tests "because it's simple"
-- ❌ Over-engineering for hypothetical needs
+- Jumping to code without understanding
+- Assuming tech choices without asking
+- Skipping tests "because it's simple"
+- Over-engineering for hypothetical needs
 
 ---
 
@@ -130,4 +122,4 @@ AI: "Tests pass. middleware.js, routes.js, app.js.
 
 ---
 
-v2.0.0 — Evidence-based edition
+v2.1.0 — Evidence-based edition

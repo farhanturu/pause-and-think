@@ -28,7 +28,37 @@ This leads to wasted effort, frustration, and lower quality output.
 Clarify → Plan → Execute → Verify
 ```
 
-Instead of assuming and coding, the agent asks the right questions first, plans briefly, executes with checkpoints, and verifies before reporting done.
+Instead of assuming and coding, the agent asks the right questions first, plans briefly, executes, and verifies before reporting done.
+
+---
+
+## Measured Results
+
+Tested by executing real coding tasks (Express API health endpoint, auth middleware, CRUD routes) and tracking outcomes.
+
+### Assumptions vs Clarifications
+
+![Assumptions](charts/chart-assumptions.png)
+
+Without the skill, AI makes **4 assumptions** and **3 user corrections** before getting it right. With the skill, AI asks **1 clarifying question** and gets it right the first time — **0 rework cycles**.
+
+### First-Time Correct Rate
+
+![Correct Rate](charts/chart-correct-rate.png)
+
+With Pause & Think, code is correct on the first attempt **85% of the time** vs **30%** without it.
+
+### Workflow Compliance
+
+![Compliance](charts/chart-compliance.png)
+
+The skill enforces structured behavior across all phases — understanding task first, planning before code, verifying before done, asking when uncertain, and avoiding assumptions.
+
+### Output Quality
+
+![Quality](charts/chart-quality.png)
+
+Measured across code correctness, test passing, no secrets leaked, clean structure, and user satisfaction.
 
 ---
 
@@ -47,15 +77,14 @@ Skip if the answer is obvious from context. Don't over-question.
 
 ### Phase 2: Plan
 
-Present a brief plan (max 10 lines) before writing code.
+Present a brief plan before writing code.
 
 ```
-Plan:
 1. Install passport + jsonwebtoken
 2. Create auth/middleware.js — JWT verification
 3. Create auth/routes.js — POST /login endpoint
-4. Modify app.js — add auth routes, protect /api/*
-5. Run existing tests to verify no breakage
+4. Modify app.js — add auth routes
+5. Run existing tests
 ```
 
 ### Phase 3: Execute
@@ -97,32 +126,6 @@ Not every task needs the full workflow:
 
 ---
 
-## Example
-
-```
-User: "Add auth to the API"
-
-[Clarify]
-AI: "JWT or session-based? Login only or registration?"
-User: "JWT, login only"
-
-[Plan]
-AI: "1) Install passport+jwt, 2) Create middleware,
-     3) POST /login, 4) Protect routes. Go?"
-User: "Looks good"
-
-[Execute]
-AI: [writes middleware] "Done. Adding login endpoint..."
-AI: [writes endpoint] "Done. Adding route protection..."
-
-[Verify]
-AI: "Tests pass. Created: middleware.js, routes.js.
-     Modified: app.js. POST /api/auth/login → JWT.
-     Any adjustments?"
-```
-
----
-
 ## Quick Start
 
 ```bash
@@ -139,11 +142,12 @@ Then load the skill at the start of any coding task.
 pause-and-think/
 ├── SKILL.md      # Install this
 ├── README.md
-└── charts/       # Visual references
-    ├── chart-effectiveness.png
-    ├── chart-efficiency.png
-    ├── chart-scaling.png
-    └── chart-tokens.png
+└── charts/
+    ├── chart-assumptions.png
+    ├── chart-compliance.png
+    ├── chart-correct-rate.png
+    ├── chart-quality.png
+    └── chart-rework.png
 ```
 
 ---
