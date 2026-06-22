@@ -6,7 +6,7 @@
 
 > Force AI to pause, clarify, and verify — producing better code with **34% fewer tokens**.
 
-![Token Consumption Comparison](chart-tokens.png)
+![Token Consumption](charts/chart-tokens.png)
 
 </div>
 
@@ -38,7 +38,7 @@ Ask 1-2 key questions upfront → write correct code first time → zero rework.
 
 Tested on: *"Add user registration with email validation to Express API"*
 
-![Effectiveness Comparison](chart-effectiveness.png)
+![Effectiveness](charts/chart-effectiveness.png)
 
 | Metric | Without | With | Savings |
 |--------|:---:|:---:|:---:|
@@ -52,12 +52,13 @@ Tested on: *"Add user registration with email validation to Express API"*
 
 ## Token Efficiency
 
-![Token Efficiency](chart-efficiency.png)
+![Efficiency](charts/chart-efficiency.png)
 
-| | Without Skill | With Skill |
+| | Without | With |
 |--|:---:|:---:|
-| **Waste/Overhead** | 8,300 tokens (38%) | 1,500 tokens (10%) |
-| **Useful Tokens** | 13,640 (62%) | 12,930 (90%) |
+| **Waste** | 8,300 tokens (38%) | — |
+| **Overhead** | — | 1,500 tokens (10%) |
+| **Useful** | 13,640 (62%) | 12,930 (90%) |
 
 > **ROI: Every 1 token spent on clarify saves 5.5 tokens of rework.**
 
@@ -65,31 +66,29 @@ Tested on: *"Add user registration with email validation to Express API"*
 
 ## Savings Scale with Complexity
 
-![Token Savings by Task Size](chart-scaling.png)
+![Scaling](charts/chart-scaling.png)
 
 | Task Size | Without | With | Savings |
 |-----------|:---:|:---:|:---:|
-| Trivial (1-2 steps) | 4,000 | 3,800 | -5% |
-| Small (3-5 steps) | 12,000 | 9,500 | -21% |
-| Medium (5-15 steps) | 22,000 | 14,400 | **-34%** |
-| Large (15+ steps) | 55,000 | 28,000 | **-49%** |
-| Complex Refactor | 120,000 | 52,000 | **-57%** |
-
-The more complex the task, the bigger the savings.
+| Trivial | 4,000 | 3,800 | -5% |
+| Small | 12,000 | 9,500 | -21% |
+| Medium | 22,000 | 14,400 | **-34%** |
+| Large | 55,000 | 28,000 | **-49%** |
+| Complex | 120,000 | 52,000 | **-57%** |
 
 ---
 
 ## How It Works
 
-### Phase 1: Clarify (1-2 Questions MAX)
+### Phase 1: Clarify (1-2 Questions)
 
 Ask only questions where a wrong assumption = rewrite:
 
-- Tech stack choice? (DB, framework)
-- Scope boundary? (what's in, what's out)
-- New project or existing code?
+- Tech stack? (DB, framework)
+- Scope? (what's in, what's out)
+- New or existing code?
 
-**Skip** if answer is obvious from context.
+Skip if answer is obvious from context.
 
 ### Phase 2: Plan (10 Lines Max)
 
@@ -118,16 +117,11 @@ Run tests. Self-review. Present summary.
 
 ## Quick Start
 
-### Install
-
 ```bash
 cp SKILL.md ~/.agents/skills/pause-and-think/SKILL.md
 ```
 
-### Use
-
 ```bash
-# In MiMo Code / Claude Code
 skill("pause-and-think")
 ```
 
@@ -139,58 +133,58 @@ skill("pause-and-think")
 User: "Add auth to the API"
 
 [Clarify]
-AI: "JWT or session-based? Login only or also registration?"
+AI: "JWT or session-based? Login only or registration?"
 User: "JWT, login only"
 
 [Plan]
 AI: "Plan: 1) Install passport+jwt, 2) Create middleware,
-     3) POST /login endpoint, 4) Protect /api/* routes. Go?"
+     3) POST /login, 4) Protect /api/* routes. Go?"
 
 [Execute]
-AI: [writes middleware] "Middleware done. Adding login endpoint..."
-AI: [writes endpoint] "Endpoint done. Adding route protection..."
+AI: [middleware] "Done. Adding login endpoint..."
+AI: [endpoint] "Done. Adding route protection..."
 
 [Verify]
-AI: "All tests pass. Created: auth/middleware.js, auth/routes.js.
-     Modified: app.js. POST /api/auth/login — returns JWT. Adjustments?"
+AI: "Tests pass. Created: middleware.js, routes.js.
+     Modified: app.js. POST /api/auth/login → JWT. Adjustments?"
 ```
 
 ---
 
 ## What It Prevents
 
-| Anti-Pattern | How Skill Fixes It |
-|-------------|-------------------|
+| Anti-Pattern | Fix |
+|-------------|-----|
 | Jumping to code | Phase 1 forces clarification |
 | No planning | Phase 2 requires brief plan |
-| 300+ line monoliths | Phase 3 checkpoints every ~80 lines |
+| 300+ line monoliths | Checkpoints every ~80 lines |
 | Skipping tests | Phase 4 requires verification |
-| Assumptions | 1-2 targeted questions before coding |
+| Assumptions | 1-2 targeted questions first |
 
 ---
 
-## Files
+## Project Structure
 
-| File | Description |
-|------|-------------|
-| `SKILL.md` | Skill definition (install this) |
-| `README.md` | This file |
-| `test-results.md` | Detailed test analysis |
-| `comparison-chart.html` | Interactive comparison |
-| `generate-charts.py` | Chart generation script |
-| `chart-tokens.png` | Token consumption chart |
-| `chart-effectiveness.png` | Effectiveness metrics |
-| `chart-efficiency.png` | Waste vs overhead donut |
-| `chart-scaling.png` | Savings by task complexity |
-| `chart-cost.png` | Cost comparison |
+```
+pause-and-think/
+├── SKILL.md                  # Install this
+├── README.md
+├── test-results.md           # Detailed analysis
+├── comparison-chart.html     # Interactive chart
+├── generate-charts.py        # Chart generation
+└── charts/
+    ├── chart-tokens.png      # Token consumption
+    ├── chart-effectiveness.png # Effectiveness
+    ├── chart-efficiency.png  # Waste vs overhead
+    ├── chart-scaling.png     # Savings by complexity
+    └── chart-cost.png        # Cost comparison
+```
 
 ---
 
 ## License
 
 MIT
-
----
 
 <div align="center">
 

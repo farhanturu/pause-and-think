@@ -2,88 +2,89 @@
 
 ## Core Principle
 
-Before coding, **pause and think**. Ask the minimum questions needed to get it right the first time. This saves more tokens than it costs.
+Before coding, **pause and think**. Ask the minimum questions needed to get it right the first time.
 
-## Workflow: 4 Phases
+> **1-2 good questions > 5 mediocre ones > 0 questions (assumptions)**
+
+---
+
+## Workflow
 
 ```
 Clarify → Plan → Execute → Verify
-  🔵       🟡      🟢       ✅
 ```
 
 ---
 
-## Phase 1: Clarify (1-2 Questions MAX)
+## Phase 1: Clarify
 
-**Goal:** Understand the task in ≤60 seconds.
+**Goal:** Understand the task in ≤30 seconds.
 
-**How:**
+**Rules:**
 1. Restate the goal in 1 sentence
-2. Ask only questions where a wrong assumption = rewrite:
-   - Tech stack choice (DB, framework, language)
-   - Scope boundary (what's included, what's not)
-   - Existing code or new project
-3. Skip questions where the answer is obvious from context
+2. Ask **max 2 questions** — only where wrong = rewrite
+3. Skip if answer is obvious from context
+4. If user says "just do it" → skip to Phase 2
 
-**Example — Good (2 questions):**
-> "Got it — add auth to Express. Quick questions:
-> 1. JWT or session-based?
-> 2. Login only, or also registration?"
+**What to ask (pick relevant only):**
+- Tech stack? (DB, framework) — ask if ambiguous
+- Scope? (what's in/out) — ask if scope unclear
+- New or existing code? — ask if context missing
 
-**Example — Bad (5 questions, overkill):**
-> "Before I start: 1. What's your favorite color? 2. Do you prefer tabs or spaces? ..."
+**What NOT to ask:**
+- Style preferences (tabs/spaces, colors)
+- Obvious choices (use existing DB, not switch)
+- Hypotheticals ("what if you need X later?")
 
-**Rule:** If user says "just do it" → skip to Phase 2, restate goal only.
+**Example:**
+```
+✅ "JWT or session-based? Login only or registration?"
+❌ "What database? What framework? What language? What IDE? What color scheme?"
+```
 
 ---
 
-## Phase 2: Plan (10 Lines Max)
+## Phase 2: Plan
 
-**Goal:** Confirm approach before writing code.
+**Goal:** Confirm approach. Max 10 lines.
 
-**Output:**
 ```
 Plan:
 1. Install [deps]
 2. Create [file] — [purpose]
-3. Modify [file] — [what changes]
+3. Modify [file] — [what]
 4. Test — [how]
 ```
 
-**Self-check before presenting:**
-- Is this the simplest solution? (YAGNI)
-- Does it match existing code patterns?
-- Am I over-engineering?
+**Self-check:** Simplest solution? Matches existing patterns? No over-engineering?
 
-**Rule:** If plan is >10 lines, split into sub-tasks.
+**Rule:** >10 lines → split into sub-tasks.
 
 ---
 
-## Phase 3: Execute (Checkpoint Every ~80 Lines)
+## Phase 3: Execute
 
-**Goal:** Write code in focused bursts.
+**Goal:** Code in focused bursts.
 
 **Checkpoints:**
-- Every ~80 lines: "Still on plan? Code clean? Any duplication?"
-- At 50%: brief progress update to user
-- Blocker hit → STOP, ask user (don't guess)
+- Every ~80 lines: "On plan? Clean? Duplication?"
+- 50% done: brief update to user
+- Blocker → STOP, ask user
 
-**Rule:** Never write 200+ lines without a micro-check.
+**Rule:** Never write 200+ lines without checking in.
 
 ---
 
 ## Phase 4: Verify
 
-**Goal:** Confirm everything works before reporting done.
+**Goal:** Confirm it works.
 
-**Steps:**
-1. Run lint/format/tests
-2. Quick self-review (secrets? errors? patterns?)
-3. Present summary:
+1. Run lint/tests
+2. Self-review (secrets? errors? patterns?)
+3. Summary:
    ```
    Done. Created: [files]. Modified: [files].
-   Endpoint: POST /api/...
-   Any adjustments?
+   [Key feature]. Adjustments?
    ```
 
 **Rule:** Never mark done without running checks.
@@ -94,32 +95,29 @@ Plan:
 
 | Size | Clarify | Plan | Execute | Verify |
 |------|---------|------|---------|--------|
-| Trivial (1-2 steps) | Restate only | Skip | Run | Quick check |
-| Small (3-5) | 1 question | Brief plan | +micro-check | Self-review |
-| Medium (5-15) | 2 questions | Full plan | +checkpoints | Review+test |
-| Large (15+) | 3 questions | Architecture | Phased exec | Full verify |
+| Trivial | Restate | Skip | Run | Quick |
+| Small | 1 question | Brief | +check | Review |
+| Medium | 2 questions | Full | +checkpoints | Test |
+| Large | 3 questions | Arch | Phased | Full |
 
 ---
 
-## Smart Thinking Patterns
+## Smart Checks
 
-**Scope check:** "Is this actually 2 tasks?" → Split, confirm priority.
-
-**Dependency check:** New package needed? → Confirm with user first.
-
-**Failure check:** "What could go wrong?" → Handle edge cases.
-
-**Reversibility:** "Can this be undone?" → Plan rollback if not.
+- **Scope:** "Is this 2 tasks?" → Split, confirm priority.
+- **Deps:** New package? → Confirm first.
+- **Failure:** "What could go wrong?" → Handle it.
+- **Reversible:** "Can this be undone?" → Plan rollback.
 
 ---
 
 ## Anti-Patterns
 
-- ❌ 5+ clarifying questions for a simple task
-- ❌ Writing 300+ lines without a checkpoint
-- ❌ Assuming tech choices without asking
-- ❌ Skipping tests "because it's simple"
-- ❌ Over-engineering for hypothetical needs
+- ❌ 5+ questions for a simple task
+- ❌ 300+ lines without a checkpoint
+- ❌ Assuming tech choices
+- ❌ Skipping tests
+- ❌ Over-engineering
 
 ---
 
@@ -128,23 +126,23 @@ Plan:
 ```
 User: "Add auth to the API"
 
-[Clarify — 2 questions]
-AI: "JWT or session-based? Login only or also registration?"
+[Clarify]
+AI: "JWT or session-based? Login only or registration?"
 User: "JWT, login only"
 
-[Plan — 5 lines]
-AI: "Plan: 1) Install passport+jwt, 2) Create middleware,
-     3) POST /login endpoint, 4) Protect /api/* routes. Go?"
+[Plan]
+AI: "1) Install passport+jwt, 2) Create middleware,
+     3) POST /login, 4) Protect routes. Go?"
 
-[Execute — with checkpoints]
-AI: [writes middleware] "Middleware done. Adding login endpoint..."
-AI: [writes endpoint] "Endpoint done. Adding route protection..."
+[Execute]
+AI: [middleware] "Done. Adding login..."
+AI: [endpoint] "Done. Adding protection..."
 
 [Verify]
-AI: "All tests pass. Created: auth/middleware.js, auth/routes.js.
-     Modified: app.js. POST /api/auth/login — returns JWT. Adjustments?"
+AI: "Tests pass. middleware.js, routes.js, app.js.
+     POST /api/auth/login → JWT. Adjustments?"
 ```
 
 ---
 
-v1.1.0 — Concise edition
+v1.2.0 — Optimized edition
