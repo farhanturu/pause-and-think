@@ -102,13 +102,7 @@ Self-check before presenting:
 4. Check for hardcoded secrets, API keys, credentials
 5. Verify code matches existing patterns
 6. Integration check — does it work with other endpoints?
-7. Present summary:
-   ```
-   Done. Created: [files]. Modified: [files].
-   [Feature description].
-   Tests: [X passing]. Edge cases tested: [list].
-   Any adjustments?
-   ```
+7. Present summary with test results
 
 **When to loop back:**
 - Tests fail → fix, don't report done
@@ -121,20 +115,18 @@ Self-check before presenting:
 
 ## Task Size Guide
 
-Defined by concrete metrics, not subjective "steps":
-
-| Size | Files Changed | Lines of Code | Clarify | Plan | Verify |
-|------|:---:|:---:|---------|------|--------|
-| **Trivial** | 1 file | <30 LOC | Restate only | Skip | Quick check |
-| **Small** | 2-3 files | 30-80 LOC | 1 question | Brief | Self-review |
-| **Medium** | 3-5 files | 80-200 LOC | 2 questions | Full | Run tests + edge cases |
-| **Large** | 5+ files | 200+ LOC | 3 questions | Architecture | Full integration + regression |
+| Size | Files | LOC | Clarify | Plan | Verify |
+|------|-------|-----|---------|------|--------|
+| Trivial | 1 | <30 | Restate | Skip | Quick |
+| Small | 2-3 | 30-80 | 1 question | Brief | Review |
+| Medium | 3-5 | 80-200 | 2 questions | Full | Tests+edge cases |
+| Large | 5+ | 200+ | 3 questions | Architecture | Full integration |
 
 **Examples:**
-- Trivial: Add a constant, change a string, fix a typo
-- Small: Add one endpoint, update one function
-- Medium: Add auth middleware, CRUD with validation
-- Large: Full feature with multiple endpoints, DB schema, tests
+- Trivial: Add a constant, fix a typo
+- Small: Add one endpoint
+- Medium: Auth middleware, CRUD with validation
+- Large: Full feature, multiple endpoints, DB schema, tests
 
 ---
 
@@ -206,4 +198,4 @@ AI: "Tests pass. middleware.js, routes.js, app.js.
 
 ---
 
-v3.0.0 — Evidence-based, iterative edition
+v3.1.0 — Realistic data, iterative edition

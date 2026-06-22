@@ -44,11 +44,13 @@ Not linear — loops back when new info emerges or user corrects understanding.
   - Plan confirmed by user before execution
   - Tests run before reporting done
 
+> **Disclaimer:** These are preliminary results from a small sample (n=5). Individual results may vary based on task complexity, model, and context.
+
 ### Tasks Tested
 
 | Trial | Task | Size | Files | LOC |
-|:---:|------|------|:---:|:---:|
-| 1 | Add /api/health endpoint | Trivial | 1 | 18 |
+|-------|------|------|-------|-----|
+| 1 | Add /api/health endpoint | Trivial | 2 | 18 |
 | 2 | Add JWT auth middleware | Small | 3 | 42 |
 | 3 | User registration + validation | Medium | 4 | 85 |
 | 4 | Rate limiting + input validation | Medium | 4 | 68 |
@@ -56,7 +58,7 @@ Not linear — loops back when new info emerges or user corrects understanding.
 
 ### Raw Data
 
-See `raw-data.json` for complete trial data.
+See `raw-data.json` for complete trial data including edge cases tested and correction details.
 
 ---
 
@@ -74,13 +76,14 @@ See `raw-data.json` for complete trial data.
 
 ![Aggregate](charts/aggregate-comparison.png)
 
-| Metric | Without Skill (n=5) | With Skill (n=5) |
+| Metric | Without (n=5) | With (n=5) |
 |--------|:---:|:---:|
-| Assumptions made | 17 | **0** |
-| Rework cycles | 12 | **0** |
-| User corrections | 12 | **0** |
-| Clarify questions | 0 | **8** |
+| Assumptions | 16 | **1** |
+| Rework cycles | 11 | **2** |
+| User corrections | 11 | **2** |
+| Questions asked | 0 | **8** |
 | Tests run | 0 | **5** |
+| First-time correct | 0/5 | **3/5** |
 
 ### Workflow Enforcement
 
@@ -88,9 +91,8 @@ See `raw-data.json` for complete trial data.
 
 - Plan confirmed by user: **4/5 tasks (80%)**
 - Tests run before done: **5/5 tasks (100%)**
-- First-time correct: **5/5 tasks (100%)**
 
-### Task Size → Questions
+### Task Size vs Questions
 
 ![Task Size](charts/task-size-questions.png)
 
@@ -143,13 +145,11 @@ Write code. If uncertain or new info emerges → loop back to Clarify.
 
 ## Task Size Guide
 
-Defined by concrete metrics:
-
 | Size | Files | LOC | Clarify | Plan | Verify |
-|------|:---:|:---:|---------|------|--------|
+|------|-------|-----|---------|------|--------|
 | Trivial | 1 | <30 | Restate | Skip | Quick |
 | Small | 2-3 | 30-80 | 1 question | Brief | Review |
-| Medium | 3-5 | 80-200 | 2 questions | Full | Tests + edge cases |
+| Medium | 3-5 | 80-200 | 2 questions | Full | Tests+edge cases |
 | Large | 5+ | 200+ | 3 questions | Architecture | Full integration |
 
 **Examples:**
@@ -189,7 +189,7 @@ cp SKILL.md ~/.agents/skills/pause-and-think/SKILL.md
 pause-and-think/
 ├── SKILL.md
 ├── README.md
-├── raw-data.json         # Trial data (5 tasks)
+├── raw-data.json
 └── charts/
     ├── per-trial-assumptions.png
     ├── per-trial-rework.png
