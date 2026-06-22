@@ -136,10 +136,28 @@ Track after each task:
 - Bugs caught at checkpoint vs bugs found by user
 - Code rewrites needed after user feedback
 
+## Test Results (Real Simulation)
+
+Tested on task: *"Add user registration with email validation to Express API"*
+
+| Metric | Without Skill | With Skill | Savings |
+|--------|:---:|:---:|:---:|
+| **Total Tokens** | 21,940 | 14,430 | **-34%** |
+| **AI Response Tokens** | 12,100 | 6,600 | **-45%** |
+| **Rework Cycles** | 2 | 0 | **-100%** |
+| **Files Rewritten** | 2 | 0 | **-100%** |
+| **Assumptions Made** | 3 | 0 | **-100%** |
+| **Cost (per task)** | $0.236 | $0.135 | **-43%** |
+
+**Key Insight:** Overhead clarify (1,500 tokens) saves 8,300 tokens of rework = **5.5x ROI**.
+
+Full details: `test-results.md` | Visual chart: `comparison-chart.html`
+
 ## Files
 
 - `SKILL.md` — The full skill definition
-- `comparison-chart.html` — Visual comparison (open in browser)
+- `comparison-chart.html` — Visual comparison chart (open in browser)
+- `test-results.md` — Detailed test results and analysis
 
 ## License
 
