@@ -167,17 +167,14 @@ AI: "Tests pass. Created: middleware.js, routes.js.
 
 ```
 pause-and-think/
-├── SKILL.md                  # Install this
+├── SKILL.md   # Install this
 ├── README.md
-├── test-results.md           # Detailed analysis
-├── comparison-chart.html     # Interactive chart
-├── generate-charts.py        # Chart generation
 └── charts/
-    ├── chart-tokens.png      # Token consumption
-    ├── chart-effectiveness.png # Effectiveness
-    ├── chart-efficiency.png  # Waste vs overhead
-    ├── chart-scaling.png     # Savings by complexity
-    └── chart-cost.png        # Cost comparison
+    ├── chart-tokens.png
+    ├── chart-effectiveness.png
+    ├── chart-efficiency.png
+    ├── chart-scaling.png
+    └── chart-cost.png
 ```
 
 ---
