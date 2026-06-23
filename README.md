@@ -183,6 +183,14 @@ cp SKILL.md ~/.agents/skills/pause-and-think/SKILL.md
 
 ---
 
+## Further Testing
+
+For multi-model validation across 8 free OpenRouter models (Llama 3.3 70B, Gemma 4 31B, Qwen3 Coder 480B, etc.):
+
+**[pause-and-think-test](https://github.com/farhanturu/pause-and-think-test)** — API test framework with automated scoring, per-model comparison charts, and raw data.
+
+---
+
 ## Project Structure
 
 ```
