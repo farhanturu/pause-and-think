@@ -1,0 +1,27 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#21262d" stroke-width="1"/>
+
+  <!-- 4 phase dots on circle path -->
+  <circle cx="100" cy="8" r="6" fill="#58a6ff"/>
+  <circle cx="192" cy="100" r="6" fill="#bc8cff"/>
+  <circle cx="100" cy="192" r="6" fill="#51cf66"/>
+  <circle cx="8" cy="100" r="6" fill="#f0883e"/>
+
+  <!-- Connecting arcs -->
+  <path d="M 100 14 A 86 86 0 0 1 186 100" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4 4"/>
+  <path d="M 186 100 A 86 86 0 0 1 100 186" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4 4"/>
+  <path d="M 100 186 A 86 86 0 0 1 14 100" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4 4"/>
+  <path d="M 14 100 A 86 86 0 0 1 100 14" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- Center: Pause symbol (two bars) -->
+  <rect x="82" y="72" width="10" height="28" rx="3" fill="#e6edf3"/>
+  <rect x="100" y="72" width="10" height="28" rx="3" fill="#e6edf3"/>
+
+  <!-- Center: Think dot -->
+  <circle cx="100" cy="120" r="5" fill="#58a6ff"/>
+
+  <!-- Loop arrow (iteration) -->
+  <path d="M 60 140 A 50 50 0 0 0 140 140" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <polygon points="138,133 145,140 138,147" fill="#58a6ff" opacity="0.4"/>
+</svg>

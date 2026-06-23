@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pause & Think Logo</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 60px; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+  .logo-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+
+  .logo-mark { width: 200px; height: 200px; position: relative; }
+
+  .logo-text { color: #e6edf3; font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+  .logo-text span { color: #58a6ff; }
+
+  .tagline { color: #8b949e; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+
+  .variants { display: flex; gap: 40px; margin-top: 40px; }
+
+  .variant { text-align: center; }
+  .variant-label { color: #8b949e; font-size: 11px; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+  .variant-dark { background: #0d1117; padding: 30px; border-radius: 12px; border: 1px solid #21262d; }
+  .variant-light { background: #f0f0f0; padding: 30px; border-radius: 12px; }
+  .variant-blue { background: #1a1f36; padding: 30px; border-radius: 12px; }
+</style>
+</head>
+<body>
+
+<!-- Main Logo -->
+<div class="logo-container">
+  <div class="logo-mark">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background circle -->
+      <circle cx="100" cy="100" r="95" fill="none" stroke="#21262d" stroke-width="1"/>
+
+      <!-- 4 phase dots on the circle path -->
+      <!-- Clarify (top) -->
+      <circle cx="100" cy="8" r="6" fill="#58a6ff"/>
+      <!-- Plan (right) -->
+      <circle cx="192" cy="100" r="6" fill="#bc8cff"/>
+      <!-- Execute (bottom) -->
+      <circle cx="100" cy="192" r="6" fill="#51cf66"/>
+      <!-- Verify (left) -->
+      <circle cx="8" cy="100" r="6" fill="#f0883e"/>
+
+      <!-- Connecting arcs (subtle) -->
+      <path d="M 100 14 A 86 86 0 0 1 186 100" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4 4"/>
+      <path d="M 186 100 A 86 86 0 0 1 100 186" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4 4"/>
+      <path d="M 100 186 A 86 86 0 0 1 14 100" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4 4"/>
+      <path d="M 14 100 A 86 86 0 0 1 100 14" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4 4"/>
+
+      <!-- Center: Pause symbol (two bars) -->
+      <rect x="82" y="72" width="10" height="28" rx="3" fill="#e6edf3"/>
+      <rect x="100" y="72" width="10" height="28" rx="3" fill="#e6edf3"/>
+
+      <!-- Center: Think dot (below pause) -->
+      <circle cx="100" cy="120" r="5" fill="#58a6ff"/>
+
+      <!-- Loop arrow (showing iteration) -->
+      <path d="M 60 140 A 50 50 0 0 0 140 140" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+      <polygon points="138,133 145,140 138,147" fill="#58a6ff" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <div class="logo-text">Pause <span>&</span> Think</div>
+  <div class="tagline">Iterative Coding Workflow</div>
+</div>
+
+<!-- Variants -->
+<div class="variants">
+  <div class="variant variant-dark">
+    <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="95" fill="none" stroke="#21262d" stroke-width="2"/>
+      <circle cx="100" cy="8" r="6" fill="#58a6ff"/>
+      <circle cx="192" cy="100" r="6" fill="#bc8cff"/>
+      <circle cx="100" cy="192" r="6" fill="#51cf66"/>
+      <circle cx="8" cy="100" r="6" fill="#f0883e"/>
+      <rect x="82" y="72" width="10" height="28" rx="3" fill="#e6edf3"/>
+      <rect x="100" y="72" width="10" height="28" rx="3" fill="#e6edf3"/>
+      <circle cx="100" cy="120" r="5" fill="#58a6ff"/>
+      <path d="M 60 140 A 50 50 0 0 0 140 140" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <polygon points="138,133 145,140 138,147" fill="#58a6ff" opacity="0.5"/>
+    </svg>
+    <div class="variant-label">Dark</div>
+  </div>
+
+  <div class="variant variant-light">
+    <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="95" fill="none" stroke="#d0d7de" stroke-width="2"/>
+      <circle cx="100" cy="8" r="6" fill="#0969da"/>
+      <circle cx="192" cy="100" r="6" fill="#8250df"/>
+      <circle cx="100" cy="192" r="6" fill="#1a7f37"/>
+      <circle cx="8" cy="100" r="6" fill="#bc4c00"/>
+      <rect x="82" y="72" width="10" height="28" rx="3" fill="#1f2328"/>
+      <rect x="100" y="72" width="10" height="28" rx="3" fill="#1f2328"/>
+      <circle cx="100" cy="120" r="5" fill="#0969da"/>
+      <path d="M 60 140 A 50 50 0 0 0 140 140" fill="none" stroke="#0969da" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <polygon points="138,133 145,140 138,147" fill="#0969da" opacity="0.5"/>
+    </svg>
+    <div class="variant-label">Light</div>
+  </div>
+
+  <div class="variant variant-blue">
+    <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="95" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+      <circle cx="100" cy="8" r="6" fill="#79c0ff"/>
+      <circle cx="192" cy="100" r="6" fill="#d2a8ff"/>
+      <circle cx="100" cy="192" r="6" fill="#7ee787"/>
+      <circle cx="8" cy="100" r="6" fill="#ffa657"/>
+      <rect x="82" y="72" width="10" height="28" rx="3" fill="#f0f6fc"/>
+      <rect x="100" y="72" width="10" height="28" rx="3" fill="#f0f6fc"/>
+      <circle cx="100" cy="120" r="5" fill="#79c0ff"/>
+      <path d="M 60 140 A 50 50 0 0 0 140 140" fill="none" stroke="#79c0ff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <polygon points="138,133 145,140 138,147" fill="#79c0ff" opacity="0.5"/>
+    </svg>
+    <div class="variant-label">Blue</div>
+  </div>
+</div>
+
+</body>
+</html>
